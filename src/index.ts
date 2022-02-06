@@ -1,4 +1,6 @@
-import type { Compiler, Compilation, Resolver, ResolveOptions } from 'webpack'
+import chalk from 'chalk'
+
+import type { Compiler, Compilation, Resolver } from 'webpack'
 
 /**
  * plugin options
@@ -155,14 +157,16 @@ class ImportOverrideWebpackPlugin {
   }
 
   log (message: string) {
-    if (this.options.log) {
-      console.log(
+    if (!this.options.log) return
+
+    console.log((
+      chalk.green(
         '\n' +
         '[override] ' +
         message +
         '\n'
       )
-    }
+    ))
   }
 }
 
